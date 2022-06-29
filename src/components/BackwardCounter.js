@@ -1,19 +1,11 @@
-import { useState, useEffect } from 'react';
+import useCounter from "../Hooks/useCounter";
 
-import Card from './Card';
+import Card from "./Card";
 
 const BackwardCounter = () => {
-  const [counter, setCounter] = useState(0);
+  let count = useCounter("decrease");
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCounter((prevCounter) => prevCounter - 1);
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  return <Card>{counter}</Card>;
+  return <Card>{count}</Card>;
 };
 
 export default BackwardCounter;
